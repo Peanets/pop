@@ -1,9 +1,8 @@
 import click
-from pop.main import pass_controller
 import os
 import shutil
 
-@click.command('create', short_help='Initializes a project')
+@click.command('create', short_help='Init a project')
 @click.argument('name', required=False, type=str)
 @click.pass_obj
 def cli(ctl,name):

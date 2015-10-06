@@ -4,20 +4,12 @@ from click.testing import CliRunner
 from nose.tools import eq_ as eq
 from nose.tools import raises
 import os
-
-def create_file():
-	with open('hello.csv', 'w') as f:
-		f.write('id,name\n')
-		f.write('12,toto\n')
+from utils import create_file, file_exists
 
 def create_file_with_dates():
     with open('hello.csv', 'w') as f:
         f.write('id,name,register_dates\n')
         f.write('12,toto,2015-05-10\n')
-
-def file_exists(path):
-	boolean = os.path.exists(path)
-	return boolean
 
 def test_import_without_project_set(runner):
     with runner.isolated_filesystem():
