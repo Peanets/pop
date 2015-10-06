@@ -4,7 +4,7 @@ import sys
 import click
 from controller import Controller
 
-CONTEXT_SETTINGS = dict(auto_envvar_prefix='POP')
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 pass_controller = click.make_pass_decorator(Controller)
 cmd_folder = os.path.abspath(os.path.join(os.path.dirname(__file__),'commands'))

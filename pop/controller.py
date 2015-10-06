@@ -43,13 +43,19 @@ class Controller(object):
     def get_projects(self):
         return self.project_manager.get_projects()
 
+    def save_tmp_table(self,data):
+        self.data_manager.add_table(data,table_name='tmp')
+        
     def add_table(self,data,table_name='default'):
-    	table_name = click.prompt('Name your data', type=str, default='default')
+    	#table_name = click.prompt('Name your data', type=str, default='default')
     	self.data_manager.add_table(data,table_name)
     	click.echo('Data injected')
 
     def get_table(self,table_name='default'):
     	return self.data_manager.get_table(table_name)
+
+    def has_data(self):
+        return self.data_manager.is_empty();
 
     def close(self):
     	self.data_manager.close()

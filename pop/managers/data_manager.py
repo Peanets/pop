@@ -6,11 +6,13 @@ class DataManager(object):
 
 	def __init__(self,ctl):
 		self.ctl=ctl
+		self._is_empty=True
 		self._load_database()
 
 	def _load_database(self):
 		try:
 			self.database = pd.HDFStore(self.ctl.project_dir+'/data/store.h5')
+			self._is_empty=False
 		except:
 			pass
 
@@ -32,6 +34,9 @@ class DataManager(object):
 
 	def list_tables(self):
 		pass
+
+	def is_empty(self):
+		return self._is_empty
 
 	def describe_tables(self):
 		pass
